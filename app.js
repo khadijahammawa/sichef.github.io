@@ -3,6 +3,29 @@ translated.forEach(element => { element.dataset.en = element.innerHTML; });
 const languageButton = document.querySelector('#lang');
 function setLanguage(language) {
   document.documentElement.lang = language;
+  // Metadata mirrors the visible language. Separate /es/ URLs are needed before hreflang.
+  const isChefPage = location.pathname.startsWith('/for-chefs');
+  const seoText = isChefPage ? {
+    en: {title: 'Sell Your Food in Barcelona | Join SíChef as a Chef', description: 'Are you an independent chef in Barcelona? Join SíChef to showcase your cooking, manage menus, pickup hours and customer orders.'},
+    es: {title: 'Vende tu comida en Barcelona | Únete a SíChef como chef', description: '¿Cocinas en Barcelona? Únete a SíChef para compartir tus platos, gestionar tu menú, horarios de recogida y pedidos.'}
+  } : {
+    en: {title: 'Home-Cooked Food & Local Chefs in Barcelona | SíChef', description: 'Discover independent local chefs in Barcelona, explore homemade meals and arrange convenient pickup through SíChef.'},
+    es: {title: 'Comida casera y chefs locales en Barcelona | SíChef', description: 'Descubre chefs independientes en Barcelona, explora sus platos caseros y organiza la recogida de tu comida con SíChef.'}
+  };
+  const currentSeo = seoText[language];
+  document.title = currentSeo.title;
+  const descriptionTag = document.querySelector('meta[name="description"]');
+  if (descriptionTag) descriptionTag.setAttribute('content', currentSeo.description);
+  for (const [selector, value] of [
+    ['meta[property="og:title"]', currentSeo.title],
+    ['meta[property="og:description"]', currentSeo.description],
+    ['meta[name="twitter:title"]', currentSeo.title],
+    ['meta[name="twitter:description"]', currentSeo.description],
+    ['meta[property="og:locale"]', language === 'es' ? 'es_ES' : 'en_GB']
+  ]) {
+    const tag = document.querySelector(selector);
+    if (tag) tag.setAttribute('content', value);
+  }
   translated.forEach(element => { element.innerHTML = element.dataset[language]; });
   languageButton.textContent = language === 'es' ? 'EN' : 'ES';
   languageButton.setAttribute('aria-label', language === 'es' ? 'Switch to English' : 'Cambiar a español');
