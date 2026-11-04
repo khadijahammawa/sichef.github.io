@@ -26,3 +26,16 @@
 .phone-pair .phone-frame:last-child{transform:translateY(14px)}
 @media(max-width:800px){.screen.app-mockup{min-height:470px;padding:24px 0}.phone-frame{width:224px;flex-basis:224px}.phone-pair{gap:12px}.phone-pair .phone-frame{max-width:210px}}
 @media(max-width:430px){.screen.app-mockup{min-height:390px}.phone-pair{gap:8px}.phone-pair .phone-frame{border-radius:23px;padding:4px}.phone-pair .phone-frame img{border-radius:18px}}
+
+/* Illustrative chef-to-customer conversation and clearly labeled sample performance */
+.chef-connect-demo{flex-wrap:wrap;align-items:center;justify-content:center}
+.message-demo{position:relative}
+.message-demo .demo-chat{position:absolute;top:43%;left:9%;right:9%;display:flex;flex-direction:column;gap:9px;line-height:1.35;font-family:system-ui,sans-serif;font-size:10px}
+.demo-chat>div{max-width:85%;padding:9px 10px;border-radius:12px;box-shadow:0 1px 3px #00000018}
+.chat-in{align-self:flex-start;background:#eeece8;color:#1b3029}
+.chat-out{align-self:flex-end;background:#2c604d;color:#fff}
+.demo-revenue{width:190px;max-width:90%;background:#fffdf8;color:#18372c;padding:22px 16px;border:1px solid #ddd7cc;border-radius:19px;box-shadow:0 15px 28px #24453618;display:flex;flex-direction:column;gap:8px;text-align:center}
+.demo-revenue span{font-size:9px;letter-spacing:1.3px;font-weight:800;color:#6b8175}
+.demo-revenue strong{font-size:37px;letter-spacing:-1px;font-family:Georgia,serif}
+.demo-revenue small{font-size:11px;color:#617669;line-height:1.4}
+@media(max-width:540px){.chef-connect-demo .demo-revenue{width:85%;padding:12px}.demo-revenue strong{font-size:28px}}
