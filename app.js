@@ -5,7 +5,11 @@ function setLanguage(language) {
   document.documentElement.lang = language;
   // Metadata mirrors the visible language. Separate /es/ URLs are needed before hreflang.
   const isChefPage = location.pathname.startsWith('/for-chefs');
-  const seoText = isChefPage ? {
+  const isEventsPage = location.pathname.startsWith('/events');
+  const seoText = isEventsPage ? {
+    en: {title: 'Food Events, Supper Clubs & Pop-Ups in Barcelona | SíChef', description: 'Discover chef-led dinners, supper clubs and food pop-ups in Barcelona. Explore local experiences or host your own event with SíChef.'},
+    es: {title: 'Eventos gastronómicos, supper clubs y pop-ups en Barcelona | SíChef', description: 'Descubre cenas de chefs, supper clubs y pop-ups en Barcelona. Explora experiencias locales u organiza tu propio evento con SíChef.'}
+  } : isChefPage ? {
     en: {title: 'Sell Your Food in Barcelona | Join SíChef as a Chef', description: 'Are you an independent chef in Barcelona? Join SíChef to showcase your cooking, manage menus, pickup hours and customer orders.'},
     es: {title: 'Vende tu comida en Barcelona | Únete a SíChef como chef', description: '¿Cocinas en Barcelona? Únete a SíChef para compartir tus platos, gestionar tu menú, horarios de recogida y pedidos.'}
   } : {
