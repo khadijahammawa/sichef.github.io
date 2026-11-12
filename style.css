@@ -92,3 +92,26 @@
  .events-page .events-phones.duo .event-phone{width:calc(50% - 7px);border-radius:24px;padding:4px}
  .events-page .events-phones.duo .event-phone img{border-radius:19px}
 }
+
+/* Headlines: balance line lengths so no word is left alone on the last line */
+h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}
+
+/* App screenshots: give the phones more room so the real product is readable */
+.demo-panel{grid-template-columns:1.35fr 1fr;gap:5%}
+.phone-pair .phone-frame{width:48%;max-width:280px;flex:0 1 280px}
+.screen.app-mockup>.phone-frame:only-child{width:280px;flex-basis:280px}
+@media(max-width:800px){.demo-panel{grid-template-columns:1fr}.phone-pair .phone-frame{max-width:250px}}
+/* Phones: one large screenshot at a time, swipe sideways for the next */
+@media(max-width:600px){
+ .screen.app-mockup.phone-pair{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:20px 12%;min-height:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .screen.app-mockup.phone-pair::-webkit-scrollbar{display:none}
+ .phone-pair .phone-frame{flex:0 0 100%;width:100%;max-width:none;scroll-snap-align:center;transform:none!important;border-radius:30px;padding:5px}
+ .phone-pair .phone-frame img{border-radius:25px}
+ .screen.app-mockup>.phone-frame:only-child{width:76%;flex-basis:76%;max-width:none}
+}
+
+/* Small captions: darker and slightly larger so they stay readable (6.7:1 contrast) */
+.caption,.events-image-caption,.events-page .events-image-caption{color:#4d5a4b;font-size:12px}
+/* Benefit icons: one matching line-icon set instead of mixed text symbols */
+.icon{display:inline-block;line-height:0}.icon svg{width:30px;height:30px;display:block}
+@media(max-width:800px){.benefit-grid article{display:grid;grid-template-columns:30px 1fr;column-gap:14px;align-items:start}.benefit-grid .icon{float:none;margin:16px 0 0;grid-row:span 2}.benefit-grid article>*:not(.icon){grid-column:2}}
